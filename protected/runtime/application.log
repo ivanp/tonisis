@@ -1,0 +1,23 @@
+2011/11/26 21:38:23 [error] [php] include(/var/www/tonisis/protected/vendors/yii/i18n/CPhpMessageSource.php): failed to open stream: No such file or directory (/var/www/tonisis/protected/vendors/yii/YiiBase.php:400)
+Stack trace:
+#0 /var/www/tonisis/protected/vendors/yii/YiiBase.php(201): import()
+#1 /var/www/tonisis/protected/vendors/yii/base/CModule.php(371): createComponent()
+#2 /var/www/tonisis/protected/vendors/yii/YiiBase.php(577): CWebApplication->getComponent()
+#3 /var/www/tonisis/protected/vendors/yii/web/CWebApplication.php(282): t()
+#4 /var/www/tonisis/protected/vendors/yii/web/CWebApplication.php(136): CWebApplication->runController()
+#5 /var/www/tonisis/protected/vendors/yii/base/CApplication.php(158): CWebApplication->processRequest()
+#6 /var/www/tonisis/index.php(8): CWebApplication->run()
+REQUEST_URI=/tonisis/index.php?r=gii
+in /var/www/tonisis/index.php (8)
+2011/11/26 21:38:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /var/www/tonisis/protected/vendors/yii/web/CWebApplication.php:281
+Stack trace:
+#0 /var/www/tonisis/protected/vendors/yii/web/CWebApplication.php(136): CWebApplication->runController('gii')
+#1 /var/www/tonisis/protected/vendors/yii/base/CApplication.php(158): CWebApplication->processRequest()
+#2 /var/www/tonisis/index.php(8): CApplication->run()
+#3 {main} REQUEST_URI=/tonisis/index.php?r=gii
+2011/11/26 21:44:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /var/www/tonisis/protected/vendors/yii/web/CWebApplication.php:281
+Stack trace:
+#0 /var/www/tonisis/protected/vendors/yii/web/CWebApplication.php(136): CWebApplication->runController('gii')
+#1 /var/www/tonisis/protected/vendors/yii/base/CApplication.php(158): CWebApplication->processRequest()
+#2 /var/www/tonisis/index.php(8): CApplication->run()
+#3 {main} REQUEST_URI=/tonisis/index.php?r=gii
