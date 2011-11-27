@@ -20,4 +20,31 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+	
+	public $navigation=array();
+	
+	protected function beforeRender($view)
+	{
+		if(Yii::app()->user->isGuest)
+		{
+			$this->navigation=array(
+				array('label'=>'Login', 'url'=>array('/site/login')),
+			);
+		}
+		else
+		{
+			$this->navigation=array(
+				array('label'=>'Dashboard', 'url'=>array('/site/index')),
+				array('label'=>'Pelanggan', 'url'=>array('/pelanggan/index')),
+				array('label'=>'Produk', 'url'=>array('/produk/index')),
+				array('label'=>'Pemasok', 'url'=>array('/pemasok/index')),
+				array('label'=>'Penjualan', 'url'=>array('/penjualan/index')),
+				array('label'=>'Pembelian', 'url'=>array('/pembelian/index')),
+				array('label'=>'Laporan', 'url'=>array('/laporan/index')),
+//				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+				array('label'=>'Logout', 'url'=>array('/site/logout'), 'itemOptions'=>array('class'=>'logout'))
+			);
+		}
+		return true;
+	}
 }
