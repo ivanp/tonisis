@@ -7,6 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+	'language'=>'id',
+	'localeDataPath'=>BASE_DIR.'/protected/messagesa',
 	'name'=>'ToniSis v0.99c',
 
 	// preloading 'log' component
@@ -30,6 +32,10 @@ return array(
 
 	// application components
 	'components'=>array(
+		'coreMessages'=>array(
+			'class'=>'CPhpMessageSource',
+			'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'../messages',
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -38,6 +44,9 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'gii'=>'gii',
+        'gii/<controller:\w+>'=>'gii/<controller>',
+        'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',
 				'<controller:\w+>'=>'<controller>/index',
 //				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

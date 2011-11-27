@@ -41,6 +41,8 @@ class Controller extends CController
 				array('label'=>'Penjualan', 'url'=>array('/penjualan/index')),
 				array('label'=>'Pembelian', 'url'=>array('/pembelian/index')),
 				array('label'=>'Laporan', 'url'=>array('/laporan/index')),
+				array('label'=>'Merk', 'url'=>array('/merk/index')),
+				array('label'=>'Jenis', 'url'=>array('/jenis/index')),
 //				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Logout', 'url'=>array('/site/logout'), 'itemOptions'=>array('class'=>'logout'))
 			);
