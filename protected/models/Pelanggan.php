@@ -76,12 +76,12 @@ class Pelanggan extends CActiveRecord
 			'id' => 'ID',
 			'nama' => 'Nama',
 			'telepon' => 'Telepon',
-			'alamat1' => 'Alamat1',
-			'alamat2' => 'Alamat2',
+			'alamat1' => 'Alamat 1',
+			'alamat2' => 'Alamat 2',
 			'kota' => 'Kota',
 			'provinsi' => 'Provinsi',
-			'kodepos' => 'Kodepos',
-			'tgl_buat' => 'Tgl Buat',
+			'kodepos' => 'Kode Pos',
+			'tgl_buat' => 'Tanggal Buat',
 		);
 	}
 

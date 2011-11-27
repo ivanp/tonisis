@@ -35,16 +35,16 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				'<controller:\w+>'=>'<controller>/index',
+//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
+			'showScriptName'=>false,
+			'urlSuffix'=>'.php',
 		),
-		*/
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=tonisis',
 			'emulatePrepare' => true,
