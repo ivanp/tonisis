@@ -16,12 +16,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'perusahaan'); ?>
-		<?php echo $form->textField($model,'perusahaan',array('size'=>60,'maxlength'=>80)); ?>
-		<?php echo $form->error($model,'perusahaan'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'no_telepon'); ?>
 		<?php echo $form->textField($model,'no_telepon',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'no_telepon'); ?>

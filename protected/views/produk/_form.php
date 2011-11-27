@@ -1,9 +1,15 @@
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php
+
+$form=$this->beginWidget('CActiveForm', array(
 	'id'=>'produk-form',
 	'enableAjaxValidation'=>false,
-)); ?>
+));
+if($form instanceof CActiveForm);
+
+
+?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -11,19 +17,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_jenis_barang'); ?>
-		<?php echo $form->textField($model,'id_jenis_barang'); ?>
+		<?php echo $form->dropDownList($model,'id_jenis_barang',CHtml::listData(JenisBarang::model()->findAll(),'id','nama')); ?>
 		<?php echo $form->error($model,'id_jenis_barang'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_merk'); ?>
-		<?php echo $form->textField($model,'id_merk'); ?>
+		<?php echo $form->dropDownList($model,'id_merk',CHtml::listData(Merk::model()->findAll(),'id','nama')); ?>
 		<?php echo $form->error($model,'id_merk'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_pemasok'); ?>
-		<?php echo $form->textField($model,'id_pemasok'); ?>
+		<?php echo $form->dropDownList($model,'id_pemasok',CHtml::listData(Pemasok::model()->findAll(),'id','nama')); ?>
 		<?php echo $form->error($model,'id_pemasok'); ?>
 	</div>
 
@@ -37,18 +43,6 @@
 		<?php echo $form->labelEx($model,'deskripsi'); ?>
 		<?php echo $form->textArea($model,'deskripsi',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'deskripsi'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tgl_buat'); ?>
-		<?php echo $form->textField($model,'tgl_buat'); ?>
-		<?php echo $form->error($model,'tgl_buat'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tgl_update'); ?>
-		<?php echo $form->textField($model,'tgl_update'); ?>
-		<?php echo $form->error($model,'tgl_update'); ?>
 	</div>
 
 	<div class="row">

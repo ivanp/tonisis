@@ -86,13 +86,13 @@ class Produk extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_jenis_barang' => 'Id Jenis Barang',
-			'id_merk' => 'Id Merk',
-			'id_pemasok' => 'Id Pemasok',
+			'id_jenis_barang' => 'Jenis',
+			'id_merk' => 'Merk',
+			'id_pemasok' => 'Pemasok',
 			'nama' => 'Nama',
 			'deskripsi' => 'Deskripsi',
-			'tgl_buat' => 'Tgl Buat',
-			'tgl_update' => 'Tgl Update',
+			'tgl_buat' => 'Tanggal Buat',
+			'tgl_update' => 'Tanggal Update',
 			'jumlah' => 'Jumlah',
 			'biaya' => 'Biaya',
 			'harga' => 'Harga',

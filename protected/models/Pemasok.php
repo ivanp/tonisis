@@ -45,6 +45,7 @@ class Pemasok extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nama', 'length', 'max'=>20),
+			array('nama', 'required'),
 			array('perusahaan', 'length', 'max'=>80),
 			array('no_telepon, alamat1, alamat2, kota, provinsi', 'length', 'max'=>45),
 			// The following rule is used by search().

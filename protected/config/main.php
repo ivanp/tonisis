@@ -8,8 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'language'=>'id',
-	'localeDataPath'=>BASE_DIR.'/protected/messagesa',
-	'name'=>'ToniSis v0.99c',
+	'name'=>'Paradise Jaya Tehnik POS v0.99c',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

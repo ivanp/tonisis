@@ -44,7 +44,7 @@
 	<?php echo $content; ?>
 
 	<div id="footer">
-		<?php echo CHtml::encode(Yii::app()->name); ?>  &copy; <?php echo date('Y'); ?> Toni.
+		<?php echo CHtml::encode(Yii::app()->name); ?>  &copy; <?php echo date('Y'); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->
