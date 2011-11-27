@@ -3,7 +3,7 @@ body
 	margin: 0;
 	padding: 0;
 	color: #555;
-	font: normal 10pt Arial,Helvetica,sans-serif;
+	font: normal 10pt Tahoma,Arial,Helvetica,sans-serif;
 	background: #EFEFEF;
 }
 
@@ -19,7 +19,6 @@ body
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
 }
 
 #content
@@ -49,7 +48,8 @@ body
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+/*	background:white url(bg.gif) repeat-x left top;*/
+	background-color: #505050;
 }
 
 #mainmenu ul
@@ -61,6 +61,11 @@ body
 #mainmenu ul li
 {
 	display: inline;
+}
+
+#mainmenu ul li.logout 
+{
+	float: right;
 }
 
 #mainmenu ul li a
@@ -75,8 +80,8 @@ body
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
+	color: #5388cd;
+	background-color:#fff;
 	text-decoration:none;
 }
 
