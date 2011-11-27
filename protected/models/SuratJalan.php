@@ -10,7 +10,7 @@
  * @property string $status
  *
  * The followings are the available model relations:
- * @property Penjualan $idPemesanan
+ * @property Penjualan $penjualan
  */
 class SuratJalan extends CActiveRecord
 {
@@ -57,7 +57,7 @@ class SuratJalan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idPemesanan' => array(self::BELONGS_TO, 'Penjualan', 'id_pemesanan'),
+			'penjualan' => array(self::BELONGS_TO, 'Penjualan', 'id_pemesanan'),
 		);
 	}
 
@@ -68,7 +68,7 @@ class SuratJalan extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_pemesanan' => 'Id Pemesanan',
+			'id_pemesanan' => 'ID Pemesanan',
 			'tanggal' => 'Tanggal',
 			'status' => 'Status',
 		);

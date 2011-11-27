@@ -61,8 +61,8 @@ class Pemasok extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'pembelians' => array(self::HAS_MANY, 'Pembelian', 'id_pemasok'),
-			'produks' => array(self::HAS_MANY, 'Produk', 'id_pemasok'),
+			'semua_pembelian' => array(self::HAS_MANY, 'Pembelian', 'id_pemasok'),
+			'semua_produk' => array(self::HAS_MANY, 'Produk', 'id_pemasok'),
 		);
 	}
 
@@ -76,8 +76,8 @@ class Pemasok extends CActiveRecord
 			'nama' => 'Nama',
 			'perusahaan' => 'Perusahaan',
 			'no_telepon' => 'No Telepon',
-			'alamat1' => 'Alamat1',
-			'alamat2' => 'Alamat2',
+			'alamat1' => 'Alamat 1',
+			'alamat2' => 'Alamat 2',
 			'kota' => 'Kota',
 			'provinsi' => 'Provinsi',
 		);

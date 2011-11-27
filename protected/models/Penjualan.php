@@ -10,9 +10,9 @@
  *
  * The followings are the available model relations:
  * @property Pembayaran $pembayaran
- * @property Pelanggan $idPelanggan
- * @property Produk[] $produks
- * @property SuratJalan[] $suratJalans
+ * @property Pelanggan $pelanggan
+ * @property Produk[] $daftar_produk
+ * @property SuratJalan[] $surat_jalan
  */
 class Penjualan extends CActiveRecord
 {
@@ -58,9 +58,9 @@ class Penjualan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'pembayaran' => array(self::HAS_ONE, 'Pembayaran', 'penjualan_id'),
-			'idPelanggan' => array(self::BELONGS_TO, 'Pelanggan', 'id_pelanggan'),
-			'produks' => array(self::MANY_MANY, 'Produk', 'penjualan_produk(id_pemesanan, id_barang)'),
-			'suratJalans' => array(self::HAS_MANY, 'SuratJalan', 'id_pemesanan'),
+			'pelanggan' => array(self::BELONGS_TO, 'Pelanggan', 'id_pelanggan'),
+			'daftar_produk' => array(self::MANY_MANY, 'Produk', 'penjualan_produk(id_pemesanan, id_barang)'),
+			'surat_jalan' => array(self::HAS_MANY, 'SuratJalan', 'id_pemesanan'),
 		);
 	}
 

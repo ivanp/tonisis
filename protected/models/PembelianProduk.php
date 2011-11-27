@@ -11,6 +11,11 @@
  */
 class PembelianProduk extends CActiveRecord
 {
+	public function primaryKey()
+	{
+		return array('id_pembelian', 'id_produk');
+	}
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return PembelianProduk the static model class
@@ -62,8 +67,8 @@ class PembelianProduk extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_pembelian' => 'Id Pembelian',
-			'id_produk' => 'Id Produk',
+			'id_pembelian' => 'ID Pembelian',
+			'id_produk' => 'ID Produk',
 			'jumlah' => 'Jumlah',
 			'biaya' => 'Biaya',
 		);

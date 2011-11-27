@@ -63,7 +63,7 @@ class Pelanggan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'penjualans' => array(self::HAS_MANY, 'Penjualan', 'id_pelanggan'),
+			'semua_penjualan' => array(self::HAS_MANY, 'Penjualan', 'id_pelanggan'),
 		);
 	}
 

@@ -57,7 +57,7 @@ class Inventaris extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idProduk' => array(self::BELONGS_TO, 'Produk', 'id_produk'),
+			'produk' => array(self::BELONGS_TO, 'Produk', 'id_produk'),
 		);
 	}
 
@@ -68,7 +68,7 @@ class Inventaris extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_produk' => 'Id Produk',
+			'id_produk' => 'Kode Produk',
 			'tanggal' => 'Tanggal',
 			'kuantitas' => 'Kuantitas',
 			'keterangan' => 'Keterangan',

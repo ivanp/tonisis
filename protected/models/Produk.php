@@ -17,12 +17,12 @@
  * @property string $harga
  *
  * The followings are the available model relations:
- * @property Inventaris[] $inventarises
- * @property Pembelian[] $pembelians
- * @property Penjualan[] $penjualans
- * @property JenisBarang $idJenisBarang
- * @property Merk $idMerk
- * @property Pemasok $idPemasok
+ * @property Inventaris[] $semua_inventaris
+ * @property Pembelian[] $semua_pembelian
+ * @property Penjualan[] $semua_penjualan
+ * @property JenisBarang $jenis
+ * @property Merk $merk
+ * @property Pemasok $pemasok
  */
 class Produk extends CActiveRecord
 {
@@ -70,12 +70,12 @@ class Produk extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'inventarises' => array(self::HAS_MANY, 'Inventaris', 'id_produk'),
-			'pembelians' => array(self::MANY_MANY, 'Pembelian', 'pembelian_produk(id_produk, id_pembelian)'),
-			'penjualans' => array(self::MANY_MANY, 'Penjualan', 'penjualan_produk(id_barang, id_pemesanan)'),
-			'idJenisBarang' => array(self::BELONGS_TO, 'JenisBarang', 'id_jenis_barang'),
-			'idMerk' => array(self::BELONGS_TO, 'Merk', 'id_merk'),
-			'idPemasok' => array(self::BELONGS_TO, 'Pemasok', 'id_pemasok'),
+			'semua_inventaris' => array(self::HAS_MANY, 'Inventaris', 'id_produk'),
+			'semua_pembelian' => array(self::MANY_MANY, 'Pembelian', 'pembelian_produk(id_produk, id_pembelian)'),
+			'semua_penjualan' => array(self::MANY_MANY, 'Penjualan', 'penjualan_produk(id_barang, id_pemesanan)'),
+			'jenis' => array(self::BELONGS_TO, 'JenisBarang', 'id_jenis_barang'),
+			'merk' => array(self::BELONGS_TO, 'Merk', 'id_merk'),
+			'pemasok' => array(self::BELONGS_TO, 'Pemasok', 'id_pemasok'),
 		);
 	}
 

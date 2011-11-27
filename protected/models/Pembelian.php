@@ -60,8 +60,8 @@ class Pembelian extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idPemasok' => array(self::BELONGS_TO, 'Pemasok', 'id_pemasok'),
-			'produks' => array(self::MANY_MANY, 'Produk', 'pembelian_produk(id_pembelian, id_produk)'),
+			'pemasok' => array(self::BELONGS_TO, 'Pemasok', 'id_pemasok'),
+			'produk_dibeli' => array(self::MANY_MANY, 'Produk', 'pembelian_produk(id_pembelian, id_produk)'),
 		);
 	}
 
@@ -72,9 +72,9 @@ class Pembelian extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_pemasok' => 'Id Pemasok',
+			'id_pemasok' => 'ID Pemasok',
 			'tanggal' => 'Tanggal',
-			'no_po' => 'No Po',
+			'no_po' => 'Nomor P.O.',
 			'total' => 'Total',
 		);
 	}

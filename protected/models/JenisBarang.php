@@ -52,7 +52,7 @@ class JenisBarang extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'produks' => array(self::HAS_MANY, 'Produk', 'id_jenis_barang'),
+			'semua_produk' => array(self::HAS_MANY, 'Produk', 'id_jenis_barang'),
 		);
 	}
 
