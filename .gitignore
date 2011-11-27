@@ -1,0 +1,6 @@
+/assets
+/protected/data
+/protected/runtime
+*~
+/.komodotools/
+/.idea/
