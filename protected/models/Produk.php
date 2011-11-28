@@ -51,7 +51,7 @@ class Produk extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_jenis_barang, id_merk, id_pemasok', 'required'),
+			array('id_jenis_barang, id_merk, id_pemasok, nama, jumlah, biaya, harga', 'required'),
 			array('id_jenis_barang, id_merk, id_pemasok, jumlah', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>80),
 			array('biaya, harga', 'length', 'max'=>12),
@@ -125,5 +125,13 @@ class Produk extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	protected function beforeSave()
+	{
+		if($this->getIsNewRecord())
+			$this->tgl_buat=date('Y-m-d H:i:s');
+		$this->tgl_update=date('Y-m-d H:i:s');
+		return $this->beforeSave();
 	}
 }

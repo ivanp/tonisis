@@ -110,4 +110,11 @@ class Pelanggan extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	protected function beforeSave()
+	{
+		if($this->getIsNewRecord())
+			$this->tgl_buat=date('Y-m-d H:i:s');
+		return $this->beforeSave();
+	}
 }

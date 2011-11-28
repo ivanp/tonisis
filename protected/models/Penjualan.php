@@ -71,8 +71,8 @@ class Penjualan extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_pelanggan' => 'Id Pelanggan',
-			'tanggal' => 'Tanggal',
+			'id_pelanggan' => 'ID Pelanggan',
+			'tanggal' => 'Tanggal Penjualan',
 		);
 	}
 
@@ -94,5 +94,11 @@ class Penjualan extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	protected function beforeSave()
+	{
+		$this->tanggal=date('Y-m-d H:i:s');
+		return $this->beforeSave();
 	}
 }
