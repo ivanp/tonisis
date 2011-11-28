@@ -100,6 +100,6 @@ class Inventaris extends CActiveRecord
 	protected function beforeSave()
 	{
 		$this->tanggal=date('Y-m-d H:i:s');
-		return $this->beforeSave();
+		return parent::beforeSave();
 	}
 }

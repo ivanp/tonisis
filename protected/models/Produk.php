@@ -132,6 +132,6 @@ class Produk extends CActiveRecord
 		if($this->getIsNewRecord())
 			$this->tgl_buat=date('Y-m-d H:i:s');
 		$this->tgl_update=date('Y-m-d H:i:s');
-		return $this->beforeSave();
+		return parent::beforeSave();
 	}
 }

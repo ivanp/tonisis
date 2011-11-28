@@ -115,6 +115,6 @@ class Pelanggan extends CActiveRecord
 	{
 		if($this->getIsNewRecord())
 			$this->tgl_buat=date('Y-m-d H:i:s');
-		return $this->beforeSave();
+		return parent::beforeSave();
 	}
 }
