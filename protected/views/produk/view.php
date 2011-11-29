@@ -1,14 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Produks'=>array('index'),
+	'Barang'=>array('index'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List Produk', 'url'=>array('index')),
-	array('label'=>'Create Produk', 'url'=>array('create')),
+	array('label'=>'Tambah Barang Baru', 'url'=>array('create')),
 	array('label'=>'Update Produk', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Produk', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Hapus Produk', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Produk', 'url'=>array('admin')),
 );
 ?>

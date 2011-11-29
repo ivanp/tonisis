@@ -44,6 +44,7 @@ class Pelanggan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('nama', 'required'),
 			array('nama', 'length', 'max'=>20),
 			array('telepon, kota, provinsi', 'length', 'max'=>45),
 			array('alamat1, alamat2', 'length', 'max'=>80),
@@ -116,5 +117,12 @@ class Pelanggan extends CActiveRecord
 		if($this->getIsNewRecord())
 			$this->tgl_buat=date('Y-m-d H:i:s');
 		return parent::beforeSave();
+	}
+	
+	public function getOptions()
+	{
+		$options=array(0=>'Pilih pelanggan (opsional)');
+		$options=array_merge($options, CHtml::listData(Pelanggan::model()->findAll(),'id','nama'));
+		return $options;
 	}
 }

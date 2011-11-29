@@ -26,6 +26,8 @@
  */
 class Produk extends CActiveRecord
 {
+	public $kuantitas=1;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Produk the static model class
@@ -55,7 +57,8 @@ class Produk extends CActiveRecord
 			array('id_jenis_barang, id_merk, id_pemasok, jumlah', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>80),
 			array('biaya, harga', 'length', 'max'=>12),
-			array('deskripsi, tgl_buat, tgl_update', 'safe'),
+			array('deskripsi, kuantitas', 'safe'),
+			array('tgl_buat, tgl_update', 'unsafe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, id_jenis_barang, id_merk, id_pemasok, nama, deskripsi, tgl_buat, tgl_update, jumlah, biaya, harga', 'safe', 'on'=>'search'),
@@ -133,5 +136,17 @@ class Produk extends CActiveRecord
 			$this->tgl_buat=date('Y-m-d H:i:s');
 		$this->tgl_update=date('Y-m-d H:i:s');
 		return parent::beforeSave();
+	}
+	
+	public function getOptionsForAdd()
+	{
+		$options=array(0=>'Pilih produk:');
+		$options=array_merge($options, CHtml::listData(Produk::model()->findAll(),'id','nama'));
+		return $options;
+	}
+	
+	public function getTotalHarga()
+	{
+		return $this->harga * $this->kuantitas;
 	}
 }
