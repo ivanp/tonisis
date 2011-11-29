@@ -110,10 +110,7 @@ class ProdukController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Produk');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		$this->redirect($this->createUrl('admin'));
 	}
 
 	/**
