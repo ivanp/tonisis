@@ -69,6 +69,7 @@ if($form instanceof CActiveForm);
 	<?php
 	if(count($model->items)) 
 	{
+		
 		foreach($model->items as $item)
 		{
 			
@@ -78,10 +79,12 @@ if($form instanceof CActiveForm);
 				<td class="produk_id"><?php echo CHtml::encode($item->id) ?></td>
 				<td style=""><?php echo CHtml::encode($item->nama) ?></td>
 				<td><?php
-					echo $form->textField($item, '['.$item->id.']harga', array('class'=>'money'));
+					echo $form->hiddenField($item, '['.$item->id.']harga'); 
+					//$form->textField($item, '['.$item->id.']harga', array('id'=>'harga_'.$item->id,'class'=>'money updateblur'));
+					echo $numberFormatter->formatCurrency($item->harga,'IDR');
 				?></td>
 				<td><?php
-					echo $form->textField($item, '['.$item->id.']kuantitas', array('class'=>'money','style'=>'width: 40px'));
+					echo $form->textField($item, '['.$item->id.']kuantitas', array('class'=>'money updateblur','style'=>'width: 40px'));
 				?></td>
 				<td style="text-align: right"><?php echo $numberFormatter->formatCurrency($item->getTotalHarga(),'IDR')?></td>
 			</tr>
@@ -100,7 +103,7 @@ if($form instanceof CActiveForm);
         'sourceUrl'=>array('penjualan/produk_list'),
         'name'=>'my_input_name',
         'options'=>array(
-          'minLength'=>'2',
+          'minLength'=>'1',
 					'autoFocus'=>true,
 					'select'=>'js: function(event,ui) {
 						$("#addProdukId").val(ui.item.id);
@@ -121,6 +124,19 @@ if($form instanceof CActiveForm);
 			<th>Total</th>
 			<th style="text-align: right"><?php echo $numberFormatter->formatCurrency($model->getGrandTotal(),'IDR')?></th>
 		</tr>
+		
+		<?php if(count($model->items)): ?>
+		<tr>
+			<td colspan="4">&nbsp;</td>	
+			<th>Pembayaran</th>
+			<th style="text-align: right"><?php echo $form->textField($model, 'payment', array('class'=>'money'));?></th>
+		</tr>
+		<tr>
+			<td colspan="6" style="text-align: right">
+				<?php echo CHtml::submitButton('Selesaikan Penjualan',array('name'=>'selesai')); ?>
+			</td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 
 </table>
@@ -130,12 +146,20 @@ if($form instanceof CActiveForm);
 
 
 </div>
-	
-	
-<div class="row buttons">
-	<?php echo CHtml::submitButton('Selesaikan Penjualan'); ?>
-</div>
-	
+<?php
+//$this->widget('application.extensions.moneymask.MMask',array(
+//					'element'=>'input.money',
+//					'config'=>array(
+//							'symbol'=>'Rp',
+//							'showSymbol'=>true,
+//							'symbolStay'=>false,
+//							'allowNegative'=>true,
+//							'decimal'=>',',
+//							'thousands'=>'.',
+//							'precision'=>0,
+//					)
+//			));
+?>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
@@ -147,7 +171,7 @@ if($form instanceof CActiveForm);
 			$(this).parents('form').submit();
 		});
 		
-		$('#cash_register input.money').focus(function() {
+		$('#cash_register input.money.updateblur').focus(function() {
 			var that=$(this);
 			var oldval=that.val();
 			that.blur(function() {
@@ -172,6 +196,11 @@ if($form instanceof CActiveForm);
 //		$('#cash_register input.money').blur(function() {
 //			$(this).parents('form').submit();
 //		});
+		
+		// Pertanyaan form penjualan
+		$('input[name=selesai]').click(function() {
+			return window.confirm("Penjualan selesai?");
+		});
 		
 		// Fokus di add produk
 		$('#my_input_name').focus();

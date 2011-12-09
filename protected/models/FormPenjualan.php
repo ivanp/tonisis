@@ -10,7 +10,7 @@ class FormPenjualan extends CFormModel
 	public $customerId;
 	public $customerName;
 	
-	public $payment;
+	public $payment=false;
 	
 	public $itemSsearch;
 	
@@ -20,6 +20,13 @@ class FormPenjualan extends CFormModel
 	
 	public $addProdukId;
 	public $addProdukName;
+	
+	const StatusBuka=0;
+	const StatusTutup=1;
+	
+	public $status=0;
+	
+	public $selesai=false;
 	
 	public static function getRegisterModeOptions()
 	{
@@ -37,7 +44,7 @@ class FormPenjualan extends CFormModel
 			array('payment', 'numerical', 'min'=>0, 'integerOnly'=>true),
 			array('customerId', 'exist','allowEmpty'=>true,'className'=>'Pelanggan','attributeName'=>'id'),
 			array('addProdukId', 'exist','allowEmpty'=>true,'className'=>'Produk','attributeName'=>'id'),
-			array('registerMode,customerId,customerName,payment,addProdukId,addProdukName', 'safe'),
+			array('registerMode,customerId,customerName,payment,addProdukId,addProdukName,selesai', 'safe'),
 		);
 	}
 

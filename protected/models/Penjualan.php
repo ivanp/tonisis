@@ -13,6 +13,7 @@
  * @property Pelanggan $pelanggan
  * @property Produk[] $daftar_produk
  * @property SuratJalan[] $surat_jalan
+ * @property detil_produk[] $detil_produk
  */
 class Penjualan extends CActiveRecord
 {
@@ -61,6 +62,7 @@ class Penjualan extends CActiveRecord
 			'pelanggan' => array(self::BELONGS_TO, 'Pelanggan', 'id_pelanggan'),
 			'daftar_produk' => array(self::MANY_MANY, 'Produk', 'penjualan_produk(id_pemesanan, id_barang)'),
 			'surat_jalan' => array(self::HAS_MANY, 'SuratJalan', 'id_pemesanan'),
+			'detil_produk' => array(self::HAS_MANY, 'PenjualanProduk', 'id_pemesanan'),
 		);
 	}
 
@@ -100,5 +102,26 @@ class Penjualan extends CActiveRecord
 	{
 		$this->tanggal=date('Y-m-d H:i:s');
 		return parent::beforeSave();
+	}
+	
+	public function getTotal()
+	{
+		static $total;
+		if(!isset($total))
+		{
+			$total=0;
+			foreach($this->detil_produk as $detil)
+			{
+				$total+=$detil->kuantitas*$detil->harga;
+			}
+		}
+		return $total;
+	}
+	
+	public function getKembalian()
+	{
+		$total=$this->getTotal();
+		$bayar=$this->pembayaran->jumlah;
+		return $bayar-$total;
 	}
 }
