@@ -1,31 +1,36 @@
 <?php
 
-class FormPenjualan extends CFormModel
+class FormPembelian extends CFormModel
 {
-	const ModeSale=1;
-	const ModeReturn=2;
+	const ModeTerima=1;
+	const ModeRetur=2;
 	
-	public $registerMode=self::ModeSale;
+	public $registerMode=self::ModeTerima;
 	
-	public $customerId;
-	public $customerName;
-	
-	public $payment=false;
+	public $pemasokId;
+	public $pemasokName;
 	
 	public $itemSsearch;
+	
+	public $suratJalan;
 	
 	public $items=array();
 	
 	public $addProdukId;
 	public $addProdukName;
 	
+	const StatusBuka=0;
+	const StatusTutup=1;
+	
+	public $status=0;
+	
 	public $selesai=false;
 	
 	public static function getRegisterModeOptions()
 	{
 		return array(
-			self::ModeSale=>'Mode: Penjualan',
-			self::ModeReturn=>'Mode: Retur Barang'
+			self::ModeTerima=>'Mode: Penerimaan Barang',
+			self::ModeRetur=>'Mode: Retur Barang'
 		);
 	}
 	
@@ -33,11 +38,10 @@ class FormPenjualan extends CFormModel
 	{
 		return array(
 			// name, email, subject and body are required
-			array('payment', 'required'),
-			array('payment', 'numerical', 'min'=>0, 'integerOnly'=>true),
-			array('customerId', 'exist','allowEmpty'=>true,'className'=>'Pelanggan','attributeName'=>'id'),
+			array('pemasokId', 'exist','allowEmpty'=>false,'className'=>'Pemasok','attributeName'=>'id','message'=>'Pemasok harus dipilih'),
 			array('addProdukId', 'exist','allowEmpty'=>true,'className'=>'Produk','attributeName'=>'id'),
-			array('registerMode,customerId,customerName,payment,addProdukId,addProdukName,selesai', 'safe'),
+			array('registerMode,pemasokId,pemasokName,suratJalan,addProdukId,addProdukName,selesai', 'safe'),
+			array('pemasokId,suratJalan','required'),
 		);
 	}
 
@@ -49,10 +53,10 @@ class FormPenjualan extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'registerMode'=>'Mode Penjualan',
-			'customerId'=>'Pelanggan',
-			'payment'=>'Pembayaran',
+			'registerMode'=>'Mode Penerimaan',
+			'pemasokId'=>'Pemasok',
 			'itemSearch'=>'Cari Barang',
+			'suratJalan'=>'Surat Jalan'
 		);
 	}
 	

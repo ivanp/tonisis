@@ -15,7 +15,7 @@ if($model instanceof FormPenjualan);
 $this->breadcrumbs=array(
 	'Pembelian',
 );?>
-<h1>Form <?php echo ($model->registerMode==FormPenjualan::ModeSale) ? 'Penjualan' : 'Return Barang'; ?></h1>
+<h1>Form <?php echo ($model->registerMode==FormPembelian::ModeTerima) ? 'Penerimaan Barang' : 'Retur Barang'; ?></h1>
 
 
 <div class="form">
@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
 <?php
 
 $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'produk-penjualan-form',
+	'id'=>'produk-pembelian-form',
 	'enableAjaxValidation'=>false,
 ));
 if($form instanceof CActiveForm);
@@ -42,12 +42,19 @@ if($form instanceof CActiveForm);
 <table width="100%">
 	<tr>
 		<td>
-				<?php echo $form->dropDownList($model,'registerMode',FormPenjualan::getRegisterModeOptions(),array('id'=>'pilRegisterMode')); ?>
+				<?php echo $form->dropDownList($model,'registerMode',FormPembelian::getRegisterModeOptions(),array('id'=>'pilRegisterMode')); ?>
 			<?php echo $form->error($model,'registerMode'); ?>
 		</td>
+		<td style="text-align: right;">
+			<?php echo $form->labelEx($model,'suratJalan'); ?>
+		</td>
+		<td>
+			<?php echo $form->textField($model,'suratJalan') ?>
+			<?php echo $form->error($model,'suratJalan'); ?>
+		</td>
 		<td style="text-align: right">
-				<?php echo $form->dropDownList($model,'customerId',Pelanggan::model()->getOptions()); ?>
-			<?php echo $form->error($model,'customerId'); ?>
+				<?php echo $form->dropDownList($model,'pemasokId',Pemasok::model()->getOptions()); ?>
+			<?php echo $form->error($model,'pemasokId'); ?>
 		</td>
 	</tr>
 </table>
@@ -127,13 +134,8 @@ if($form instanceof CActiveForm);
 		
 		<?php if(count($model->items)): ?>
 		<tr>
-			<td colspan="4">&nbsp;</td>	
-			<th>Pembayaran</th>
-			<th style="text-align: right"><?php echo $form->textField($model, 'payment', array('id'=>'input_bayar', 'class'=>'money'));?></th>
-		</tr>
-		<tr>
 			<td colspan="6" style="text-align: right">
-				<?php echo CHtml::submitButton('Selesaikan Penjualan',array('name'=>'selesai')); ?>
+				<?php echo CHtml::submitButton('Selesai',array('name'=>'selesai')); ?>
 			</td>
 		</tr>
 		<?php endif; ?>
@@ -199,7 +201,7 @@ if($form instanceof CActiveForm);
 		
 		// Pertanyaan form penjualan
 		$('input[name=selesai]').click(function() {
-			return window.confirm("Penjualan selesai?");
+			return window.confirm("Pembelian selesai?");
 		});
 		
 		// Fokus di add produk

@@ -108,4 +108,11 @@ class Pemasok extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getOptions()
+	{
+		$options=array(0=>'Pilih pemasok');
+		$options=array_merge($options, CHtml::listData(Pelanggan::model()->findAll(),'id','nama'));
+		return $options;
+	}
 }

@@ -2,17 +2,24 @@
 
 class PembelianController extends Controller
 {
-	public function actionIndex()
+	public function actionReceipt()
 	{
-		$this->render('index');
+		if(!isset($_GET['id']))
+			throw new CHttpException(400);
+		$pembelian=Pembelian::model()->findByPk($_GET['id']);
+		if(!($pembelian instanceof Pembelian))
+			throw new CHttpException(404,'Receipt tidak ditemukan');
+		$this->render('receipt',array(
+			'pembelian'=>$pembelian
+		));
 	}
 	
-	public function actionRecept()
+	public function actionIndex()
 	{
-		$model=new FormPenjualan;
-		if(isset($_POST['FormPenjualan']))
+		$model=new FormPembelian;
+		if(isset($_POST['FormPembelian']))
 		{
-			$model->attributes=$_POST['FormPenjualan'];
+			$model->attributes=$_POST['FormPembelian'];
 			if(isset($_POST['Produk']))
 			{
 				foreach($_POST['Produk'] as $k=>$v)
@@ -31,56 +38,55 @@ class PembelianController extends Controller
 				$model->addProdukId=null;
 				$model->addProdukName='';
 			}
-			if(!empty($_POST['selesai']))
+			if($model->validate() && !empty($_POST['selesai']))
 			{
-				if(empty($model->payment))
-				{
-					$model->payment=$model->getGrandTotal();
-				}
-				
 				$db=Yii::app()->db;
 				$trans=$db->beginTransaction();
 				try
 				{
 					// Save data penjualan
-					$penjualan=new Penjualan;
-					if(!empty($model->customerId))
-						$penjualan->id_pelanggan=$model->customerId;
-					$penjualan->tanggal=date('Y-m-d H:i:s');
-					$penjualan->save();
+					$pembelian=new Pembelian;
+					$pembelian->id_pemasok=$model->pemasokId;
+					$pembelian->tanggal=date('Y-m-d H:i:s');
+					$pembelian->no_po=$model->suratJalan;
+					if (!$pembelian->save())
+						throw new FormMultiModelsErrorException($pembelian);
 					// Save produknya
 					foreach($model->items as $item)
 					{
 						if($item instanceof Produk);
-						$p_jual=new PenjualanProduk;
-						$p_jual->id_barang=$item->id;
-						$p_jual->kuantitas=$item->kuantitas;
-						$p_jual->harga=$item->harga;
-						$p_jual->id_pemesanan=$penjualan->id;
-						$p_jual->save();
+						$p_beli=new PembelianProduk;
+						$p_beli->id_produk=$item->id;
+						$p_beli->jumlah=$item->kuantitas;
+						$p_beli->biaya=$item->biaya;
+						$p_beli->id_pembelian=$pembelian->id;
+						if(!$p_beli->save())
+							throw new FormMultiModelsErrorException($p_beli);
 						// Save inventaris
 						if($item instanceof Produk);
 						$inv=new Inventaris;
 						$inv->id_produk=$item->id;
 						$inv->kuantitas=$item->kuantitas;
-						$inv->keterangan='Penjualan';
+						$inv->keterangan='Pembelian';
 						$inv->tanggal=date('Y-m-d H:i:s');
-						$inv->save();
+						if(!$inv->save())
+							throw new FormMultiModelsErrorException($inv);
 						// Kurangi jumlah produk tersedia
-						$item->jumlah-=$item->kuantitas;
-						$item->save();
+						$item->jumlah+=$item->kuantitas;
+						if(!$item->save())
+							throw new FormMultiModelsErrorException($item);
 					}
-					// Simpan pembayaran
-					$pembayaran=new Pembayaran;
-					$pembayaran->penjualan_id=$penjualan->id;
-					$pembayaran->cara='Cash';
-					$pembayaran->jumlah=$model->payment;
-					$pembayaran->save();
 					$trans->commit();
-					$this->redirect(array('/penjualan/receipt','id'=>$penjualan->id));
+					$this->redirect(array('/pembelian/receipt','id'=>$pembelian->id));
+				}
+				catch (FormMultiModelsErrorException $e)
+				{
+					$model->addErrors($e->getModel()->getErrors());
+					$trans->rollback();
 				}
 				catch (Exception $e)
 				{
+					$model->addError('error', 'Terjadi kesalahan fatal: '.$e->getMessage());
 					$trans->rollback();
 				}
 			}
