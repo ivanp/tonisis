@@ -232,3 +232,8 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+table.nav_depan td
+{
+	text-align: center;
+}

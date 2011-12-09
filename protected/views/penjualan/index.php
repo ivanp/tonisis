@@ -129,7 +129,7 @@ if($form instanceof CActiveForm);
 		<tr>
 			<td colspan="4">&nbsp;</td>	
 			<th>Pembayaran</th>
-			<th style="text-align: right"><?php echo $form->textField($model, 'payment', array('class'=>'money'));?></th>
+			<th style="text-align: right"><?php echo $form->textField($model, 'payment', array('id'=>'input_bayar', 'class'=>'money'));?></th>
 		</tr>
 		<tr>
 			<td colspan="6" style="text-align: right">
@@ -193,9 +193,9 @@ if($form instanceof CActiveForm);
 			return false;
 		});
 		
-//		$('#cash_register input.money').blur(function() {
-//			$(this).parents('form').submit();
-//		});
+		$('input#input_bayar').blur(function() {
+			$(this).parents('form').submit();
+		});
 		
 		// Pertanyaan form penjualan
 		$('input[name=selesai]').click(function() {
