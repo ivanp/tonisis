@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'language'=>'id',
-	'name'=>'Paradise Jaya Tehnik POS v0.99c',
+	'name'=>'Paradise Jaya Tehnik',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

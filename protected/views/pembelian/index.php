@@ -2,7 +2,7 @@
 $numberFormatter=Yii::app()->locale->getNumberFormatter();
 //var_dump(Yii::app()->locale->getNumberFormatter()->formatCurrency(500000,'IDR'));exit;
 //$numberFormatter->formatCurrency(500000,'IDR');
-if($model instanceof FormPenjualan);
+if($model instanceof FormPembelian);
 
 //$cs=Yii::app()->clientScript;
 //if($cs instanceof CClientScript);

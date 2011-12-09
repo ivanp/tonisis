@@ -5,7 +5,7 @@ $dateFormatter=Yii::app()->locale->getDateFormatter();
 $cs=Yii::app()->clientScript;
 if($cs instanceof CClientScript);
 $cs->registerCssFile(Yii::app()->baseUrl.'/css/receipt.css');
-if($pembelian instanceof Penjualan);
+if($pembelian instanceof Pembelian);
 ?>
 <div id="receipt_wrapper">
 	<div id="receipt_header">
@@ -36,9 +36,9 @@ if($pembelian instanceof Penjualan);
 	?>
 		<tr>
 		<td><span class='long_name'><?php echo $produk->nama ?></span><span class='short_name'><?php echo $produk->nama ?></span></td>
-		<td style="text-align: right"><?php echo $numberFormatter->formatCurrency($produk->harga,'IDR') ?></td>
-		<td style='text-align:center;'><?php echo $detil->kuantitas ?></td>
-		<td style='text-align:right;'><?php echo $numberFormatter->formatCurrency($produk->harga*$detil->kuantitas,'IDR'); ?></td>
+		<td style="text-align: right"><?php echo $numberFormatter->formatCurrency($produk->biaya,'IDR') ?></td>
+		<td style='text-align:center;'><?php echo $detil->jumlah ?></td>
+		<td style='text-align:right;'><?php echo $numberFormatter->formatCurrency($produk->biaya*$detil->jumlah,'IDR'); ?></td>
 		</tr>
 	<?php
 	}
@@ -48,21 +48,6 @@ if($pembelian instanceof Penjualan);
 	<td colspan="2" style='text-align:right;border-top:2px solid #000000;'><?php echo $numberFormatter->formatCurrency($pembelian->getTotal(), 'IDR') ?></td>
 	</tr>
 
-	<?php if($pembelian->getKembalian() != 0)
-	{
-	?>
-		<tr>
-		<td colspan="3" style='text-align:right;'>Pembayaran</td>
-		<td colspan="2" style='text-align:right'><?php echo $numberFormatter->formatCurrency($pembelian->pembayaran->jumlah, 'IDR') ?></td>
-		</tr>
-		
-		<tr>
-		<td colspan="3" style='text-align:right;'>Kembalian</td>
-		<td colspan="2" style='text-align:right'><?php echo $numberFormatter->formatCurrency($pembelian->getKembalian(),'IDR') ?></td>
-		</tr>
-	<?php
-	}
-	?>
 	</table>
 
 </div>

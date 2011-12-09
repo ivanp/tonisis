@@ -62,6 +62,7 @@ class Pembelian extends CActiveRecord
 		return array(
 			'pemasok' => array(self::BELONGS_TO, 'Pemasok', 'id_pemasok'),
 			'produk_dibeli' => array(self::MANY_MANY, 'Produk', 'pembelian_produk(id_pembelian, id_produk)'),
+			'detil_produk' => array(self::HAS_MANY, 'PembelianProduk', 'id_pembelian'),
 		);
 	}
 
@@ -105,5 +106,19 @@ class Pembelian extends CActiveRecord
 	{
 		$this->tanggal=date('Y-m-d H:i:s');
 		return parent::beforeSave();
+	}
+	
+	public function getTotal()
+	{
+		static $total;
+		if(!isset($total))
+		{
+			$total=0;
+			foreach($this->detil_produk as $detil)
+			{
+				$total+=$detil->jumlah*$detil->biaya;
+			}
+		}
+		return $total;
 	}
 }
