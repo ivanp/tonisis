@@ -1,4 +1,9 @@
 <?php
+$this->breadcrumbs=array(
+	'Laporan'=>array('/laporan'),
+	'Penjualan',
+);
+
 $numberFormatter=Yii::app()->locale->getNumberFormatter();
 $dateFormatter=Yii::app()->locale->getDateFormatter();
 //$cs=Yii::app()->g

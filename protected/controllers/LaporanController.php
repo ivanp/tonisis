@@ -110,6 +110,10 @@ class LaporanController extends Controller
 	
 	public function actionPersediaan()
 	{
+		$daftar_produk=Produk::model()->findAll();
 		
+		$this->render('persediaan',array(
+			'semua_produk'=>$daftar_produk,
+		));
 	}
 }
