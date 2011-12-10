@@ -1,12 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Barang'=>array('index'),
+	'Produk'=>array('index'),
 	'Tambah Baru',
 );
 
 $this->menu=array(
-	array('label'=>'Daftar Barang', 'url'=>array('admin')),
-	array('label'=>'Manage Barang', 'url'=>array('admin')),
+	array('label'=>'Daftar Produk', 'url'=>array('index')),
 );
 ?>
 

@@ -149,4 +149,19 @@ class Produk extends CActiveRecord
 	{
 		return $this->harga * $this->kuantitas;
 	}
+	
+	public function getFormattedBiaya()
+	{
+		return Yii::app()->locale->getNumberFormatter()->formatCurrency($this->biaya,'IDR');
+	}
+	
+	public function getFormattedHarga()
+	{
+		return Yii::app()->locale->getNumberFormatter()->formatCurrency($this->harga,'IDR');
+	}
+	
+	public function createViewUrl()
+	{
+		return Yii::app()->createUrl('/produk/view',array('id'=>$this->id));
+	}
 }
