@@ -29,7 +29,7 @@ $('.search-form form').submit(function(){
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'produk-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+//	'filter'=>$model,
 	'enableSorting'=>false,
 	'columns'=>array(
 		'id',

@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-	'Produks'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	'Produk'=>array('index'),
+	$model->nama=>array('view','id'=>$model->id),
 	'Update',
 );
 
@@ -12,6 +12,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Produk <?php echo $model->id; ?></h1>
+<h1>Update Produk <?php echo $model->nama; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

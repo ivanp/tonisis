@@ -47,10 +47,10 @@ class Pemasok extends CActiveRecord
 			array('nama', 'length', 'max'=>20),
 			array('nama', 'required'),
 			array('perusahaan', 'length', 'max'=>80),
-			array('no_telepon, alamat1, alamat2, kota, provinsi', 'length', 'max'=>45),
+			array('no_telepon, fax, alamat1, alamat2, kota, provinsi', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nama, perusahaan, no_telepon, alamat1, alamat2, kota, provinsi', 'safe', 'on'=>'search'),
+			array('id, nama, perusahaan, no_telepon, fax, alamat1, alamat2, kota, provinsi', 'safe', 'on'=>'search'),
 		);
 	}
 

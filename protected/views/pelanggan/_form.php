@@ -5,8 +5,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -19,6 +17,12 @@
 		<?php echo $form->labelEx($model,'telepon'); ?>
 		<?php echo $form->textField($model,'telepon',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'telepon'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'fax'); ?>
+		<?php echo $form->textField($model,'fax',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'fax'); ?>
 	</div>
 
 	<div class="row">
@@ -51,14 +55,8 @@
 		<?php echo $form->error($model,'kodepos'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'tgl_buat'); ?>
-		<?php echo $form->textField($model,'tgl_buat'); ?>
-		<?php echo $form->error($model,'tgl_buat'); ?>
-	</div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton('Simpan'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

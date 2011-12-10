@@ -46,13 +46,13 @@ class Pelanggan extends CActiveRecord
 		return array(
 			array('nama', 'required'),
 			array('nama', 'length', 'max'=>20),
-			array('telepon, kota, provinsi', 'length', 'max'=>45),
+			array('telepon, fax, kota, provinsi', 'length', 'max'=>45),
 			array('alamat1, alamat2', 'length', 'max'=>80),
 			array('kodepos', 'length', 'max'=>5),
 			array('tgl_buat', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nama, telepon, alamat1, alamat2, kota, provinsi, kodepos, tgl_buat', 'safe', 'on'=>'search'),
+			array('id, nama, telepon, fax, alamat1, alamat2, kota, provinsi, kodepos, tgl_buat', 'safe', 'on'=>'search'),
 		);
 	}
 

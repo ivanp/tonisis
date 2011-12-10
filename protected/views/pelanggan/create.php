@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Pelanggan'=>array('index'),
-	'Create',
+	'Buat Baru',
 );
 
 $this->menu=array(
