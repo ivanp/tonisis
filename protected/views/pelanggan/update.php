@@ -1,15 +1,14 @@
 <?php
 $this->breadcrumbs=array(
-	'Pelanggans'=>array('index'),
+	'Daftar Pelanggan'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Pelanggan', 'url'=>array('index')),
-	array('label'=>'Create Pelanggan', 'url'=>array('create')),
-	array('label'=>'View Pelanggan', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Pelanggan', 'url'=>array('admin')),
+	array('label'=>'Daftar Pelanggan', 'url'=>array('index')),
+	array('label'=>'Daftar Pelanggan Baru', 'url'=>array('create')),
+	array('label'=>'Lihat Detail Pelanggan', 'url'=>array('view', 'id'=>$model->id)),
 );
 ?>
 

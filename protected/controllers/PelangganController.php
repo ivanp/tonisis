@@ -106,27 +106,16 @@ class PelangganController extends Controller
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Pelanggan');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$model=new Pelanggan('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Pelanggan']))
 			$model->attributes=$_GET['Pelanggan'];
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}

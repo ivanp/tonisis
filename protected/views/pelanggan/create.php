@@ -1,12 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Pelanggans'=>array('index'),
+	'Pelanggan'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Pelanggan', 'url'=>array('index')),
-	array('label'=>'Manage Pelanggan', 'url'=>array('admin')),
+	array('label'=>'Daftar Pelanggan', 'url'=>array('index')),
 );
 ?>
 

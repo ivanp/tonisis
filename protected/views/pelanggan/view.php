@@ -5,11 +5,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Pelanggan', 'url'=>array('index')),
-	array('label'=>'Create Pelanggan', 'url'=>array('create')),
-	array('label'=>'Update Pelanggan', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Pelanggan', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Pelanggan', 'url'=>array('admin')),
+	array('label'=>'Daftar Pelanggan', 'url'=>array('index')),
+	array('label'=>'Buat Pelanggan Baru', 'url'=>array('create')),
+	array('label'=>'Update Data Pelanggan', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Hapus Pelanggan', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Hapus pelanggan ini?')),
 );
 ?>
 
