@@ -237,3 +237,8 @@ table.nav_depan td
 {
 	text-align: center;
 }
+
+input.hasDatepicker
+{
+	width: 80px;
+}
