@@ -104,6 +104,7 @@ if($form instanceof CActiveForm);
         'name'=>'my_input_name',
         'options'=>array(
           'minLength'=>'1',
+					'delay'=>50,
 					'autoFocus'=>true,
 					'select'=>'js: function(event,ui) {
 						$("#addProdukId").val(ui.item.id);

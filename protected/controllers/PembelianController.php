@@ -26,6 +26,13 @@ class PembelianController extends Controller
 				{
 					$produk=Produk::model()->findByPk($k);
 					$produk->attributes=$v;
+					if($model->registerMode==FormPenjualan::ModeReturn)
+					{
+						if ($produk->kuantitas>0)
+						{
+							$produk->kuantitas=0-$produk->kuantitas;
+						}
+					}
 					$model->items[]=$produk;
 				}
 			}
@@ -34,6 +41,13 @@ class PembelianController extends Controller
 				$produk=Produk::model()->findByPk($model->addProdukId);
 				if($produk instanceof Produk);
 				$produk->harga=(int)$produk->harga;
+				if($model->registerMode==FormPenjualan::ModeReturn)
+				{
+					if ($produk->kuantitas>0)
+					{
+						$produk->kuantitas=0-$produk->kuantitas;
+					}
+				}
 				$model->items[]=$produk;
 				$model->addProdukId=null;
 				$model->addProdukName='';

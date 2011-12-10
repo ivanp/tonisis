@@ -12,7 +12,12 @@ if($penjualan instanceof Penjualan);
 		<div id="company_name">PT. Paradise Jaya Tehnik</div>
 		<div id="company_address">Jl. Danau Sunter Utara blok F20 No. 29-30, Jakarta Utara</div>
 		<div id="company_phone">021-27156783</div>
-		<div id="sale_receipt">Struk Penjualan</div>
+		<div id="sale_receipt"><?php if($penjualan->getTotal()>0):?>
+			Struk Penjualan
+			<?php else: ?>
+			Retur Barang
+			<?php endif; ?>
+			</div>
 		<div id="sale_time"><?php echo $dateFormatter->formatDateTime($penjualan->tanggal) ?></div>
 	</div>
 	<div id="receipt_general_info">

@@ -112,7 +112,7 @@ class Pemasok extends CActiveRecord
 	public function getOptions()
 	{
 		$options=array(0=>'Pilih pemasok');
-		$options=array_merge($options, CHtml::listData(Pelanggan::model()->findAll(),'id','nama'));
+		$options=array_merge($options, CHtml::listData(Pemasok::model()->findAll(),'id','nama'));
 		return $options;
 	}
 }
