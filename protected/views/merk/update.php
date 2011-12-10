@@ -1,18 +1,17 @@
 <?php
 $this->breadcrumbs=array(
-	'Merks'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	'Merk Barang'=>array('index'),
+	$model->nama=>array('view','id'=>$model->id),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Merk', 'url'=>array('index')),
-	array('label'=>'Create Merk', 'url'=>array('create')),
-	array('label'=>'View Merk', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Merk', 'url'=>array('admin')),
+	array('label'=>'Daftar Merk Barang', 'url'=>array('index')),
+	array('label'=>'Tambah Merk Barang', 'url'=>array('create')),
+	array('label'=>'Lihat Detail Merk Barang', 'url'=>array('view', 'id'=>$model->id)),
 );
 ?>
 
-<h1>Update Merk <?php echo $model->id; ?></h1>
+<h1>Update Merk <?php echo $model->nama; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -6,10 +6,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List JenisBarang', 'url'=>array('index')),
-	array('label'=>'Create JenisBarang', 'url'=>array('create')),
-	array('label'=>'View JenisBarang', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage JenisBarang', 'url'=>array('admin')),
+	array('label'=>'Daftar Jenis Barang', 'url'=>array('index')),
+	array('label'=>'Tambah Jenis Barang', 'url'=>array('create')),
+	array('label'=>'Lihat Detail Jenis Barang', 'url'=>array('view', 'id'=>$model->id)),
 );
 ?>
 

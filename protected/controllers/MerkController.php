@@ -95,7 +95,15 @@ class MerkController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			try
+			{
+				$this->loadModel($id)->delete();
+			}
+			catch (CDbException $e)
+			{
+				Yii::app()->user->setFlash('error','Tidak dapat menghapus merk ini karena sudah digunakan dalam pembelian/penjualan');
+				$this->redirect(array('view','id'=>$id));
+			}
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -106,27 +114,16 @@ class MerkController extends Controller
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Merk');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$model=new Merk('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Merk']))
 			$model->attributes=$_GET['Merk'];
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}

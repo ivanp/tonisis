@@ -1,19 +1,18 @@
 <?php
 $this->breadcrumbs=array(
-	'Merks'=>array('index'),
-	$model->id,
+	'Merk Barang'=>array('index'),
+	$model->nama,
 );
 
 $this->menu=array(
-	array('label'=>'List Merk', 'url'=>array('index')),
-	array('label'=>'Create Merk', 'url'=>array('create')),
-	array('label'=>'Update Merk', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Merk', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Merk', 'url'=>array('admin')),
+	array('label'=>'Daftar Merk Barang', 'url'=>array('index')),
+	array('label'=>'Tambah Merk Barang', 'url'=>array('create')),
+	array('label'=>'Update Detail Merk Barang', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Hapus Merk', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Yakin ingin menghapus merk ini?')),
 );
 ?>
 
-<h1>View Merk #<?php echo $model->id; ?></h1>
+<h1><?php echo $model->nama; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

@@ -1,15 +1,14 @@
 <?php
 $this->breadcrumbs=array(
-	'Merks'=>array('index'),
-	'Create',
+	'Merk Barang'=>array('index'),
+	'Tambah Baru',
 );
 
 $this->menu=array(
-	array('label'=>'List Merk', 'url'=>array('index')),
-	array('label'=>'Manage Merk', 'url'=>array('admin')),
+	array('label'=>'Daftar Merk Barang', 'url'=>array('index')),
 );
 ?>
 
-<h1>Create Merk</h1>
+<h1>Tambah Merk Barang</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
