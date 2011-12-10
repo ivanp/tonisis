@@ -95,7 +95,15 @@ class PemasokController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			try
+			{
+				$this->loadModel($id)->delete();
+			}
+			catch (CDbException $e)
+			{
+				Yii::app()->user->setFlash('error','Tidak dapat menghapus pemasok ini karena sudah digunakan dalam pembelian/penjualan');
+				$this->redirect(array('view','id'=>$id));
+			}
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -106,27 +114,16 @@ class PemasokController extends Controller
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Pemasok');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$model=new Pemasok('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Pemasok']))
 			$model->attributes=$_GET['Pemasok'];
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}

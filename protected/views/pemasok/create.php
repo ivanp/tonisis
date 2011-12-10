@@ -1,12 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Pemasoks'=>array('index'),
-	'Create',
+	'Pemasok'=>array('index'),
+	'Tambahkan Pemasok',
 );
 
 $this->menu=array(
-	array('label'=>'List Pemasok', 'url'=>array('index')),
-	array('label'=>'Manage Pemasok', 'url'=>array('admin')),
+	array('label'=>'Daftar Pemasok', 'url'=>array('index')),
 );
 ?>
 

@@ -101,7 +101,7 @@ class PelangganController extends Controller
 			}
 			catch (CDbException $e)
 			{
-				Yii::app()->user->setFlash('error','Tidak dapat menghapus produk ini karena sudah digunakan dalam pembelian/penjualan');
+				Yii::app()->user->setFlash('error','Tidak dapat menghapus pelanggan ini karena sudah digunakan dalam pembelian/penjualan');
 				$this->redirect(array('view','id'=>$id));
 			}
 
