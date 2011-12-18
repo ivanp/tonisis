@@ -21,6 +21,7 @@ $this->menu=array(
 		'nama',
 		'perusahaan',
 		'no_telepon',
+		'fax',
 		'alamat1',
 		'alamat2',
 		'kota',

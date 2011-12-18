@@ -15,6 +15,10 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('no_telepon')); ?>:</b>
 	<?php echo CHtml::encode($data->no_telepon); ?>
 	<br />
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('fax')); ?>:</b>
+	<?php echo CHtml::encode($data->fax); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('alamat1')); ?>:</b>
 	<?php echo CHtml::encode($data->alamat1); ?>

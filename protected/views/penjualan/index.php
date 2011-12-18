@@ -77,7 +77,8 @@ if($form instanceof CActiveForm);
 			<tr produk_id="<?php echo $item->id ?>">
 				<td class="produk_aksi"><?php echo CHtml::linkButton('Hapus',array('class'=>'delBtn','produk_id'=>$item->id)) ?></td>
 				<td class="produk_id"><?php echo CHtml::encode($item->id) ?></td>
-				<td style=""><?php echo CHtml::encode($item->nama) ?></td>
+				<td style=""><?php echo CHtml::encode($item->nama) ?><br/>
+				<span style="font-size: 90%"><i>Stok tersedia: <?php echo $item->jumlah?></i></span></td>
 				<td><?php
 					echo $form->hiddenField($item, '['.$item->id.']harga'); 
 					//$form->textField($item, '['.$item->id.']harga', array('id'=>'harga_'.$item->id,'class'=>'money updateblur'));

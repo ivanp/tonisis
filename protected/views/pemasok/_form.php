@@ -18,6 +18,12 @@
 		<?php echo $form->textField($model,'no_telepon',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'no_telepon'); ?>
 	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'fax'); ?>
+		<?php echo $form->textField($model,'fax',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'fax'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'alamat1'); ?>
