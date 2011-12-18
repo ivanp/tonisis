@@ -41,15 +41,32 @@
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
 		
-	<?php if(Yii::app()->user->hasFlash('success')):?>
+	<?php if(Yii::app()->user->hasFlash('success')):
+		$flash=Yii::app()->user->getFlash('success');
+		if(!is_array($flash))
+		{
+			$flash=array($flash);
+		}
+		foreach($flash as $message):
+	?>
 	<div class="flash-success">
-			<?php echo Yii::app()->user->getFlash('success'); ?>
+			<?php echo $message; ?>
 	</div>
+	<?php endforeach; ?>
 	<?php endif; ?>
-	<?php if(Yii::app()->user->hasFlash('error')):?>
+		
+	<?php if(Yii::app()->user->hasFlash('error')):
+		$flash=Yii::app()->user->getFlash('error');
+		if(!is_array($flash))
+		{
+			$flash=array($flash);
+		}
+		foreach($flash as $message):
+	?>
 	<div class="flash-error">
-			<?php echo Yii::app()->user->getFlash('error'); ?>
+			<?php echo $message; ?>
 	</div>
+	<?php endforeach; ?>
 	<?php endif; ?>
 
 	<?php echo $content; ?>

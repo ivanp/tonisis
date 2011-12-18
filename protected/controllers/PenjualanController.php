@@ -25,34 +25,62 @@ class PenjualanController extends Controller
 				foreach($_POST['Produk'] as $k=>$v)
 				{
 					$produk=Produk::model()->findByPk($k);
-					$produk->attributes=$v;
-					if($model->registerMode==FormPenjualan::ModeReturn)
+					if($produk instanceof Produk)
 					{
-						if ($produk->kuantitas>0)
+						$produk->attributes=$v;
+						if($model->registerMode==FormPenjualan::ModeReturn)
 						{
-							$produk->kuantitas=0-$produk->kuantitas;
+							if ($produk->kuantitas>0)
+							{
+								$produk->kuantitas=0-$produk->kuantitas;
+							}
 						}
+						$model->items[$k]=$produk;
 					}
-					$model->items[]=$produk;
 				}
 			}
 			if($model->addProdukId)
 			{
 				$produk=Produk::model()->findByPk($model->addProdukId);
-				if($produk instanceof Produk);
-				$produk->harga=(int)$produk->harga;
-				if($model->registerMode==FormPenjualan::ModeReturn)
+				if($produk instanceof Produk)
 				{
-					if ($produk->kuantitas>0)
+					if(isset($model->items[$produk->id]))
 					{
-						$produk->kuantitas=0-$produk->kuantitas;
+						$model->addError('produk','Barang sudah ada di form, silahkan rubah kuantitas');
+					}
+					else
+					{
+						$produk->harga=(int)$produk->harga;
+						if($model->registerMode==FormPenjualan::ModeReturn)
+						{
+							if ($produk->kuantitas>0)
+							{
+								$produk->kuantitas=0-$produk->kuantitas;
+							}
+						}
+						$model->items[]=$produk;
 					}
 				}
-				$model->items[]=$produk;
 				$model->addProdukId=null;
 				$model->addProdukName='';
 			}
-			if(!empty($_POST['selesai']))
+			// ulang lagiii
+			foreach($model->items as $k => $item)
+			{
+				if($item->kuantitas==0)
+				{
+					unset($model->items[$k]);
+					continue;
+				}
+				if($model->registerMode==FormPenjualan::ModeSale)
+				{
+					if($item->kuantitas>$item->jumlah)
+					{
+						$model->addError('produk', sprintf('Kuantitas "%s" tidak cukup', $item->nama));
+					}
+				}
+			}
+			if(!empty($_POST['selesai']) && !$model->hasErrors())
 			{
 				if(empty($model->payment))
 				{
@@ -80,7 +108,6 @@ class PenjualanController extends Controller
 						$p_jual->id_pemesanan=$penjualan->id;
 						$p_jual->save();
 						// Save inventaris
-						if($item instanceof Produk);
 						$inv=new Inventaris;
 						$inv->id_produk=$item->id;
 						$inv->kuantitas=$item->kuantitas;
@@ -90,6 +117,10 @@ class PenjualanController extends Controller
 						// Kurangi jumlah produk tersedia
 						$item->jumlah-=$item->kuantitas;
 						$item->save();
+						if($item->jumlah==0)
+						{
+							Yii::app()->user->addFlash('error',sprintf('Peringatan: produk "%s" sudah kosong', $item->nama));
+						}
 					}
 					// Simpan pembayaran
 					$pembayaran=new Pembayaran;
