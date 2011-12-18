@@ -16,6 +16,7 @@ class PenjualanController extends Controller
 	
 	public function actionIndex()
 	{
+		error_log('Penjualan::index()');
 		$model=new FormPenjualan;
 		if(isset($_POST['FormPenjualan']))
 		{
@@ -80,7 +81,7 @@ class PenjualanController extends Controller
 					}
 				}
 			}
-			if(!empty($_POST['selesai']) && !$model->hasErrors())
+			if(!empty($_POST['selesai']) && $model->validate())
 			{
 				if(empty($model->payment))
 				{
@@ -133,6 +134,7 @@ class PenjualanController extends Controller
 				}
 				catch (Exception $e)
 				{
+					$model->addError('error', sprintf('Error [%s] with message: %s',get_class($e),$e->getMessage()));
 					$trans->rollback();
 				}
 			}

@@ -4,7 +4,7 @@ class WebUser extends CWebUser
 {
 	public function addFlash($key,$value)
 	{
-		$flash=$this->getFlash($key,$value);
+		$flash=$this->getFlash($key,array());
 		if(!is_array($flash))
 		{
 			$flash=array($flash);

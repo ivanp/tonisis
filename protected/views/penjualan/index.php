@@ -133,11 +133,13 @@ if($form instanceof CActiveForm);
 			<th>Pembayaran</th>
 			<th style="text-align: right"><?php echo $form->textField($model, 'payment', array('id'=>'input_bayar', 'class'=>'money'));?></th>
 		</tr>
+		<?php if($model->payment!=''): ?>
 		<tr>
 			<td colspan="6" style="text-align: right">
 				<?php echo CHtml::submitButton('Selesaikan Penjualan',array('name'=>'selesai')); ?>
 			</td>
 		</tr>
+		<?php endif; ?>
 		<?php endif; ?>
 	</tbody>
 
@@ -202,6 +204,12 @@ if($form instanceof CActiveForm);
 		// Pertanyaan form penjualan
 		$('input[name=selesai]').click(function() {
 			return window.confirm("Penjualan selesai?");
+		});
+		
+		$('input#input_bayar').keypress(function(e) {
+			if(e.keyCode == 13) {
+				$(this).parents('form').submit();
+			}
 		});
 		
 		// Fokus di add produk

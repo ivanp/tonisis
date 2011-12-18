@@ -33,12 +33,21 @@ class FormPenjualan extends CFormModel
 	{
 		return array(
 			// name, email, subject and body are required
-			array('payment', 'required'),
-			array('payment', 'numerical', 'min'=>0, 'integerOnly'=>true),
-			array('customerId', 'exist','allowEmpty'=>true,'className'=>'Pelanggan','attributeName'=>'id'),
-			array('addProdukId', 'exist','allowEmpty'=>true,'className'=>'Produk','attributeName'=>'id'),
+			array('payment', 'validPayment'),
+//			array('payment', 'numerical', 'min'=>0, 'integerOnly'=>true),
+//			array('customerId', 'exist','allowEmpty'=>true,'className'=>'Pelanggan','attributeName'=>'id'),
+//			array('addProdukId', 'exist','allowEmpty'=>true,'className'=>'Produk','attributeName'=>'id'),
 			array('registerMode,customerId,customerName,payment,addProdukId,addProdukName,selesai', 'safe'),
 		);
+	}
+	
+	public function validPayment($attribute,$params)
+	{
+		$validator=new CNumberValidator();
+		$validator->attributes=array('payment');
+		$validator->min=$this->getGrandTotal();
+		$validator->message='Pembayaran tidak mencukupi';
+		$validator->validate($this);
 	}
 
 	/**
