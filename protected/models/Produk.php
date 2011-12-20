@@ -150,6 +150,11 @@ class Produk extends CActiveRecord
 		return $this->harga * $this->kuantitas;
 	}
 	
+	public function getTotalBiaya()
+	{
+		return $this->biaya * $this->kuantitas;
+	}
+	
 	public function getFormattedBiaya()
 	{
 		return Yii::app()->locale->getNumberFormatter()->formatCurrency($this->biaya,'IDR');

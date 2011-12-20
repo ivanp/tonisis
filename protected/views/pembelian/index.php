@@ -88,12 +88,12 @@ if($form instanceof CActiveForm);
 				<td><?php
 					echo $form->hiddenField($item, '['.$item->id.']harga'); 
 					//$form->textField($item, '['.$item->id.']harga', array('id'=>'harga_'.$item->id,'class'=>'money updateblur'));
-					echo $numberFormatter->formatCurrency($item->harga,'IDR');
+					echo $numberFormatter->formatCurrency($item->biaya,'IDR');
 				?></td>
 				<td><?php
 					echo $form->textField($item, '['.$item->id.']kuantitas', array('class'=>'money updateblur','style'=>'width: 40px'));
 				?></td>
-				<td style="text-align: right"><?php echo $numberFormatter->formatCurrency($item->getTotalHarga(),'IDR')?></td>
+				<td style="text-align: right"><?php echo $numberFormatter->formatCurrency($item->getTotalBiaya(),'IDR')?></td>
 			</tr>
 <?php
 		}

@@ -65,7 +65,7 @@ class FormPembelian extends CFormModel
 		$total=0;
 		foreach($this->items as $item)
 		{
-			$total+=$item->getTotalHarga();
+			$total+=$item->getTotalBiaya();
 		}
 		return $total;
 	}
